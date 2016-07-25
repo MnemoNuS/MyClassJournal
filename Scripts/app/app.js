@@ -10,25 +10,32 @@ var app = angular.module('app', []);
 var panels = [
 {
 	index: 0,
-	name: "menu",
-	title: "menu",
+	name: "Menu",
+	title: "Меню",
 	href: ""
-	},	{
+},
+	{
 		index: 1,
-		name: "class",
-		title: "class",
+		name: "Class",
+		title: "Список класса",
 		href: ""
 	},
 	{
 		index: 2,
 		name: "Journal",
-		title: "Journal",
+		title: "Жернал",
 		href: ""
 	},
 	{
 		index: 3,
 		name: "Works",
-		title: "Works",
+		title: "Работы",
+		href: ""
+	},
+	{
+		index: 4,
+		name: "PupilCard",
+		title: "Информация об учинике",
 		href: ""
 	}
 ];
@@ -64,12 +71,12 @@ var someClass = {
 		},
 		{
 			id: 2,
-			name: "Иванов Иван Иванович",
+			name: "Смирнова Гадя Петрович",
 			classId: 1,
-			bDate: "12/07/2010",
-			age: 6,
+			bDate: "12/07/2013",
+			age: 33,
 			gender: "female",
-			family: "full"
+			family: "only mather"
 		}
 	]
 }
@@ -86,6 +93,9 @@ var main = function ($scope, classService) {
 	self.title = "title";
 	self.myClass = classService.getClass;
 	self.myPupils = classService.getPupils;
+	self.pupilInfo = function() {
+		
+	}
 };
 
 

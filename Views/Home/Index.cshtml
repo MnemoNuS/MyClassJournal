@@ -12,13 +12,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<ul class="nav nav-pills" ng-if="currentPanel.name != 'menu'">
+		<ul class="nav nav-pills" ng-if="currentPanel.name != 'Menu'">
 			<li role="presentation" ng-class="{ 'active': panel.index == currentPanel.index}" ng-repeat="panel in panels track by $index"><a href="" ng-click="setCurrentPanel(panel)">{{panel.title}}</a></li>
 		</ul>
 		<br/>
 	</div>
 
-	<div class="row" ng-if="currentPanel.name == 'menu'">
+	<div class="row" ng-if="currentPanel.name == 'Menu'">
 		<div class="col-sm-4 col-md-3" ng-repeat="panel in panels track by $index" ng-if="$index >
 				0">
 			<a href="" ng-click="setCurrentPanel(panel)">
@@ -32,7 +32,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="row" ng-if="currentPanel.name == 'class'">
+	<div class="row" ng-if="currentPanel.name == 'Class'">
 
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
