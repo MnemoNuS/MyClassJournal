@@ -1,10 +1,12 @@
-﻿'use strict';
+﻿/// <reference path="C:\Users\mnemon\Documents\Visual Studio 2015\Projects\MyClassJournal\MyClassJournal\Views/Home/Modals/AddPupil.cshtml" />
+/// <reference path="~/Scripts/angular.min.js" />
+'use strict';
 
 /**
  * angular
  * Description: Angular!
  */
-var app = angular.module('app', []);
+var app = angular.module('app', ['ui.bootstrap']);
 
 
 var panels = [
@@ -23,7 +25,7 @@ var panels = [
 	{
 		index: 2,
 		name: "Journal",
-		title: "Жернал",
+		title: "Журнал",
 		href: ""
 	},
 	{
@@ -81,32 +83,67 @@ var someClass = {
 	]
 }
 
+var teacher = {
+	id: 1,
+	name: "Имя Фамилия Отчество",
+	classId: "1",
+	classsName: "8-Ы"
+}
 
+var currentClass = {
+	id: 1,
+	Name: "8-Ы"
+}
 
-var main = function ($scope, classService) {
+var main = function ($scope, $uibModalInstance, classService) {
 	var self = $scope;
 	self.panels = panels;
 	self.currentPanel = panels[0];
 	self.setCurrentPanel = function (panel) {
 		self.currentPanel = panel;
 	};
-	self.title = "title";
+	self.teacher = teacher;
+	self.currentClass = currentClass;
 	self.myClass = classService.getClass;
 	self.myPupils = classService.getPupils;
-	self.pupilInfo = function() {
-		
+	self.currentPupil = new Pupil();
+	self.pupilInfo = function () { };
+	self.save = function () {
+		$uibModalInstance.close(self.currentPupil);
+	};
+
+	self.cancel = function () {
+		$uibModalInstance.dismiss('cancel');
+	};
+};
+
+var modals = function ($scope, $uibModal, classService) {
+	self.openAddingForm = function () {
+		var modalInstance = $uibModal.open({
+			templateUrl: '/Views/Home/Modals/AddPupil.cshtml',
+			controller: 'main',
+			size: 'sm'
+		});
+
+		modalInstance.result.then(function (addedPupil) {
+			addedPupil.id = self.myPupils.length + 1;
+			classService.addPupil(addedPupil);
+		});
+	};
+
+};
+
+function classService() {
+	this.getClass = someClass;
+	this.getPupils = someClass.pupilsList;
+	this.addPupil = function (pupil) {
+		someClass.pupilsList.push(pupil);
 	}
 };
 
-
-function classService () {
-	this.getClass = someClass;
-	this.getPupils = someClass.pupilsList;
-};
-
 app.service('classService', classService);
-
-var appController = app.controller('AppController', ['$scope', 'classService', main]);
+var appController = app.controller('AppController', ['$scope', '$uibModalInstance', 'classService', main]);
+var modalsController = app.controller('ModalsController', ['$scope', '$uibModal', 'classService', modals]);
 
 
 

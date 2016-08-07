@@ -15,6 +15,7 @@ namespace MyClassJournal
 						"~/Scripts/jquery.validate*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/app").Include(
+						"~/Scripts/ui-bootstrap-tpls-2.0.0.min.js",
 						"~/Scripts/angular.min.js",
 						"~/Scripts/app/app.js"
 						));

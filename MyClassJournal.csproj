@@ -133,6 +133,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\289597-frederika.jpg" />
     <Content Include="Content\images\defaultImg.png" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.0.0.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -173,6 +174,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Modals\AddPupil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
